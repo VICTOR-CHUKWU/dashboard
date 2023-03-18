@@ -1,0 +1,155 @@
+.contentContainer {
+  flex-grow: 1;
+}
+.mainContentContainer {
+  border-right: 1px solid #d5dae1;
+  min-height: 85vh;
+  flex-direction: row;
+  // height: 100%;
+}
+
+.metadataContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5em;
+  margin-bottom: 1.5rem;
+}
+
+.metadata {
+  border-left: 2px solid #f0a500;
+  padding-left: 1em;
+}
+
+.workplanContainer {
+  background: #eef0f3;
+  margin: 1rem;
+  padding: 1.5rem;
+  border-radius: 0.625rem;
+}
+
+.workplan {
+  .workplanItems {
+    padding: 1rem;
+    background: #ffffff;
+  }
+}
+
+.approveBtn {
+  background: #c4c4c4;
+  border-radius: 1.25rem;
+  padding: 0.5rem;
+  color: white;
+}
+.viewBtn {
+  color: #0ebc50 !important;
+}
+
+.rejectBtn {
+  color: #e84545 !important;
+}
+
+.reportContainer {
+  margin-top: 1.5rem;
+  padding: 1rem 1.5rem;
+
+  .reportHeader {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.reportBody {
+  padding: 1rem 0;
+
+  .reportImgGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5em;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+    .imageContainer {
+      width: 12rem;
+      padding: 0.5rem;
+      height: 12rem;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 1.25rem;
+      }
+    }
+  }
+}
+
+.allImagesContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5em;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+
+  .imageContainer {
+    width: 12rem;
+    padding: 0.5rem;
+    height: 12rem;
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 1.25rem;
+    }
+  }
+}
+
+.singleImageContainer {
+  width: 100%;
+  height: 100%;
+  padding: 1rem 0.3rem;
+  .imageContainer {
+    width: 100%;
+    height: 30rem;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media print {
+      height: 50rem !important;
+      img {
+        object-fit: fill;
+      }
+    }
+  }
+
+  .imageMetadata {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    align-items: center;
+    p {
+      font-size: 0.75rem;
+      color: #7e7e7e;
+      padding-right: 0.3rem;
+
+      @media print {
+        font-size: 1.3rem;
+        color: black;
+      }
+    }
+  }
+}
+
+.commentContainer {
+  background: #eef0f3;
+  border-radius: 1.25rem;
+  padding: 1rem;
+}
+
+.descriptionBox {
+  border-radius: 1.25rem;
+  min-height: 6rem !important;
+  background: #eef0f3;
+}
+
+.approveBtn {
+  cursor: pointer;
+}
