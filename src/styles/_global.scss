@@ -48,6 +48,10 @@ a {
   margin-left: auto;
 }
 
+.dashboard-main {
+  background-color: #F8F8F8;
+}
+
 .theme-secondary {
   background-color: #d5dae1;
 }
@@ -60,9 +64,22 @@ a {
   cursor: pointer;
 }
 
+.brand-logo {
+  height: auto !important;
+  width: 3rem !important;
+}
+
+#more-btn {
+  background-color: red;
+}
+
 .success-btn {
   cursor: pointer;
   color: #0ebc50 !important;
+}
+
+.button-cancel {
+  background-color: #A2A2A2;
 }
 
 .curso-pointer {
@@ -75,17 +92,17 @@ a {
 }
 
 .modal-header {
-  border-bottom: none !important;
-  padding: 0.65rem 1.857rem !important;
+    border-bottom: none !important;
 }
 
 .modal-content {
   border-radius: 0.7rem !important;
 }
 .modal-body {
-  padding: 0.65rem 1.857rem !important;
   max-height: 35rem;
   overflow-y: auto;
+  display: flex;
+  justify-content: center;
 
   &::-webkit-scrollbar {
     width: 0.5em;
@@ -117,8 +134,34 @@ a {
   }
 }
 
+.btn-modal {
+  margin-left: 1rem;
+}
+
+.all-users-text {
+  color: #141715;
+}
+
 .card {
   border: none;
+}
+
+.card-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.card-children-font {
+  font-size: 14px !important;
+  font-weight: 400;
+  color: #141715;
+}
+
+.card-name-font {
+  font-size: 26px !important;
+  font-weight: 600;
+  color: #141715;
 }
 
 .table-result {
@@ -130,6 +173,32 @@ a {
   vertical-align: inherit;
   color: #434343;
   justify-content: space-between;
+}
+
+.red-dot, .yellow-dot, .blue-dot {
+  position: relative;
+  &::before{
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    left: 6px;
+    top: 45%;
+    background-color: red;
+    border-radius: 50%;
+  }
+}
+
+.yellow-dot {
+  &::before{
+    background-color: #fed713;;
+  }
+}
+
+.blue-dot {
+  &::before{
+    background-color: blue;
+  }
 }
 
 thead {

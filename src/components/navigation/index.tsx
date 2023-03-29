@@ -46,7 +46,7 @@ export const NavBar: ({ logout }: NavProps) => JSX.Element = ({
           <Link href="/dashboard">
             <a className={`navbar-brand brand-logo ${styles.logo}`}>
               {/* <h3>AWADE</h3> */}
-              <img src="/static/images/logo-a.png" alt="logo" />
+              <img src="/static/images/Logo-updated.png" alt="logo" />
             </a>
           </Link>
           {/* 

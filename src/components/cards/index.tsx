@@ -28,20 +28,25 @@ type MapProps = {
 
 interface CardProp {
   name?: string;
-  description?: string;
+  // description?: string;
   children?: any;
+  icon?: string;
 }
 
-export const Card: FC<CardProp> = ({ name, description, children }) => {
+export const Card: FC<CardProp> = ({ name, icon, children }) => {
   return (
-    <div className="card card-curved overflow-auto">
-      <div className="card-body">
-        <h4 className="card-title font-weight-bold">{name}</h4>
-        <p className="card-description"> {description}</p>
-        {children}
+    <div className="card card-curved overflow-auto bg-white mb-5 mt-3 position-relative pt-3 pb-0 w-100">
+      {icon && (
+        <img
+          src={`/static/images/${icon}`}
+          alt="Icon"
+          className="position-absolute card-icon"
+        />
+      )}
+      <div className="card-body position-relative">
+        {name && <h4 className="card-name-font ml-5">{name}</h4>}
+        <p className="card-children-font">{children}</p>
       </div>
     </div>
   );
 };
-
-

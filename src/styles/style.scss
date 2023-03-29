@@ -20391,6 +20391,7 @@ html {
   background: #ffffff;
   padding: 0;
   width: 100%;
+  margin: 1rem;
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
@@ -24001,7 +24002,7 @@ code {
 /* Cards */
 .card {
   border-radius: 0.9rem !important;
-
+  padding: 2rem;
   border: 0;
 }
 .card .card-body {
