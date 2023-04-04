@@ -1,30 +1,4 @@
-import React, { FC, useState } from "react";
-
-import { useRouter } from "next/router";
-import { SVGIcon } from "@components/shared";
-import { data } from "jquery";
-
-type CardProps = {
-  info: {
-    size: string;
-    bg_class: string;
-    image?: string;
-    name?: string;
-    text: string;
-    desc?: string;
-    link?: string;
-    icon: string;
-  };
-  onClick?: any;
-};
-
-type MapProps = {
-  url?: any;
-  markers?: any;
-  onMapClick?: (e: any) => void;
-  showLabel?: any;
-  mode?: any;
-};
+import React, { FC } from "react";
 
 interface CardProp {
   name?: string;
@@ -45,7 +19,8 @@ export const Card: FC<CardProp> = ({ name, icon, children }) => {
       )}
       <div className="card-body position-relative">
         {name && <h4 className="card-name-font ml-5">{name}</h4>}
-        <p className="card-children-font">{children}</p>
+        <div>{children}</div>
+        {/* <p className="card-children-font">{children}</p> */}
       </div>
     </div>
   );

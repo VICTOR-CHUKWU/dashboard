@@ -1,6 +1,6 @@
 import React, { ReactNode, FC } from "react";
 import { Empty, Loader } from "@components";
-import { Row } from "react-bootstrap";
+import { Form, Row } from "react-bootstrap";
 import { PaginationProps, TableProp } from "src/types";
 import { SVGIcon } from "@components/shared";
 
@@ -39,7 +39,10 @@ export const Table = ({
                   value={searchTerm}
                 />
                 <div className="input-group-append">
-                  <button className="btn btn-sm btn-facebook" type="button">
+                  <button
+                    className="btn btn-sm btn-facebook"
+                    type="button"
+                  >
                     <i className="mdi mdi-magnify" />
                   </button>
                 </div>
@@ -54,7 +57,7 @@ export const Table = ({
         <>
           {data?.length ? (
             <>
-              <table className="table sortable-table table-bordered">
+              <table className="table sortable-table table-bordered table-striped">
                 <thead>
                   <tr>
                     {headers?.length

@@ -210,13 +210,49 @@ thead {
     #c2c9d1 !important;
 }
 
+.sidebar {
+  background-color: #011E0C;
+}
+
 .nav-item .logout-link {
   color: #db442f !important;
+}
+
+.input-group-append .icon-search {
+  cursor: default;
+}
+
+.table-props:nth-child(even) {
+  background: #CCC
+}
+
+.search-props {
+  height: 2.15rem;
+  background-color: #F8F8F8;
+}
+
+.input-width {
+  width: 15rem;
+}
+
+.no-border {
+  border: none !important;
+  outline: none !important;
+}
+
+.dropdown-filter {
+  width: 20%;
+  cursor: pointer;
 }
 
 .form-group .form-control {
   border-radius: 1.25rem !important;
   background-color: #eef0f3;
+}
+
+.form-group .form-input-field {
+  border-radius: 0.5rem !important;
+  width: 100%;
 }
 
 .form-group .form-btn {

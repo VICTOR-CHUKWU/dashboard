@@ -1,4 +1,4 @@
-import { Row } from "react-bootstrap";
+import { Form, Row } from "react-bootstrap";
 import React, { useEffect, useState, useCallback } from "react";
 import moment from "moment";
 import { Modal, Page, Table, Card, Loader } from "@components";
@@ -13,6 +13,8 @@ const Dashboard: React.FC = () => {
   const [limit, setLimit] = useState(10);
   const [approvalModal, setApprovalModal] = useState(false);
   const [declineModal, setDeclineModal] = useState(false);
+  const [search, setSearch] = useState("");
+  const [filterValue, setFilterValue] = useState("");
 
   const onPrevPage = () => {
     setCurrentPage((prevState) => prevState - 1);
@@ -21,9 +23,24 @@ const Dashboard: React.FC = () => {
   const onNextPage = () => {
     setCurrentPage((prevState) => prevState + 1);
   };
+
+  const searchData = () => {
+    console.log(search, "Put a string to know what we are logging");
+  };
   // const onChangePageLimit = (e: any) => {
   //   setLimit(e.target.value);
   // };
+  React.useEffect(() => {
+    const getData = setTimeout(() => {
+      console.log("what you", search);
+    }, 2000);
+
+    return () => clearTimeout(getData);
+  }, [search]);
+
+  React.useEffect(() => {
+    console.log("what you are doing", filterValue);
+  }, [filterValue]);
 
   const tableHeader = [
     "Name",
@@ -90,7 +107,7 @@ const Dashboard: React.FC = () => {
     <Page name={"Dashboard"}>
       <>
         <Row className="dashboard-main pr-4">
-          <h6 className="mb-4 all-users-text">All Users</h6>
+          <h6 className="mb-4 mt-4 all-users-text">All Users</h6>
           <div className="col-md-4 col-6 d-flex align-items-stretch">
             <Card name={"50"} icon={"path20.png"}>
               <p className="ml-5">No. of request</p>
@@ -108,6 +125,39 @@ const Dashboard: React.FC = () => {
           </div>
         </Row>
         <Row className="dashboard-main pr-4">
+          <div className="col-12">
+            <Card>
+              <div className="d-flex align-items-center my-3">
+                {/* <div className="form-group mb-0 position-relative"> */}
+                <Form.Select
+                  aria-label="Default select example"
+                  className="dropdown-filter border"
+                  value={filterValue}
+                  onChange={(e) => setFilterValue(e.target.value)}
+                >
+                  <option>Type</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </Form.Select>
+
+                <div className="position-relative ml-3 d-flex align-items-center border rounded search-props ">
+                  <span className="btn btn-sm input-group-append">
+                    <i className="mdi mdi-magnify icon-search" />
+                  </span>
+                  <input
+                    onChange={(e) => setSearch(e.target.value)}
+                    type="text"
+                    className="no-border form-input-field input-width pl-0 search-props"
+                    placeholder="Search for user, email address"
+                    value={search}
+                  />
+                </div>
+                {/* </div> */}
+              </div>
+            </Card>
+          </div>
+
           <div className="col-12 grid-margin stretch-card">
             <Card>
               <Table
