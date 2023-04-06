@@ -232,7 +232,7 @@ thead {
 }
 
 .input-width {
-  width: 15rem;
+  max-width: 20rem;
 }
 
 .no-border {
@@ -241,7 +241,7 @@ thead {
 }
 
 .dropdown-filter {
-  width: 20%;
+  max-width: 30%;
   cursor: pointer;
 }
 

@@ -7,14 +7,18 @@ import { accessService } from "@src/services";
 import user from "../../src/data/user.json";
 
 const Dashboard: React.FC = () => {
-  // const [tableData, setTableData] = useState(null);
-  const [tableLoad, setTableLoad] = useState(false);
+  const [tableData, setTableData] = useState([]);
+  const [tableLoad, setTableLoad] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const [approvalModal, setApprovalModal] = useState(false);
   const [declineModal, setDeclineModal] = useState(false);
   const [search, setSearch] = useState("");
   const [filterValue, setFilterValue] = useState("");
+  const [paginationData, setPaginationData] = useState<any>(null);
+  const [totalPages, setTotalPages] = useState(1);
+  const [approveCount, setApproveCount] = useState('0')
+  const [declineCount, setDeclineCount] = useState('0')
 
   const onPrevPage = () => {
     setCurrentPage((prevState) => prevState - 1);
@@ -24,13 +28,38 @@ const Dashboard: React.FC = () => {
     setCurrentPage((prevState) => prevState + 1);
   };
 
+  const loadTableData = (tableData: any) => {
+    setTableData(tableData.data);
+    setPaginationData(tableData.pagination);
+    // setCurrentPage(tableData.pagination.currentPage);
+    // setTotalPages(tableData?.pagination?.totalPages);
+    // setResultCount(tableData.pagination?.totalDocumentCount);
+    setTableLoad(false);
+  };
+
+  const getEarlyAccess = () => {
+    accessService
+      .getAll()
+      .then((r: any) => {
+        loadTableData(r);
+        const approved = r.data.filter((el: any) => el.isApprovedUse)
+        const declined = r.data.filter((el: any) => !el.isApprovedUse)
+        setDeclineCount(declined.length.toString())
+        setApproveCount(approved.length.toString())
+      })
+      .catch((e) => {
+        console.log(e);
+        setTableLoad(false);
+      });
+  }
+
   const searchData = () => {
     console.log(search, "Put a string to know what we are logging");
   };
   // const onChangePageLimit = (e: any) => {
   //   setLimit(e.target.value);
   // };
-  React.useEffect(() => {
+  useEffect(() => {
     const getData = setTimeout(() => {
       console.log("what you", search);
     }, 2000);
@@ -38,9 +67,13 @@ const Dashboard: React.FC = () => {
     return () => clearTimeout(getData);
   }, [search]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     console.log("what you are doing", filterValue);
   }, [filterValue]);
+
+  useEffect(() => {
+    getEarlyAccess()
+  }, [])
 
   const tableHeader = [
     "Name",
@@ -54,23 +87,20 @@ const Dashboard: React.FC = () => {
   const tableRow = (data: any) => {
     return (
       <tr>
-        <td>{data.name}</td>
-        <td>{data.Email}</td>
-        <td>{data.PhoneNumber}</td>
+        <td>{data?.name || 'No name'}</td>
+        <td>{data.email}</td>
+        <td>{data?.PhoneNumber || 'No phone'}</td>
         <td>
           <span
-            className={`border rounded px-2 py-1 d-flex w-100 text-center align-items-center justify-content-center ${
-              data.status === "Approved"
-                ? "blue-dot"
-                : data.status === "Pending"
-                ? "yellow-dot"
-                : "red-dot"
-            }`}
+            className={`border rounded px-2 py-1 bg-white d-flex w-100 text-center align-items-center justify-content-center ${data.isApprovedUse
+              ? "blue-dot"
+              : "red-dot"
+              }`}
           >
-            {data.status}
+            {data.isApprovedUse ? 'Approved' : 'Pending'}
           </span>
         </td>
-        <td>{data.account}</td>
+        <td>{data?.account || 'Sender'}</td>
         <td>
           <Dropdown>
             <Dropdown.Toggle variant="secondary" id="dropdown-basic">
@@ -78,22 +108,30 @@ const Dashboard: React.FC = () => {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item>
-                <span
-                  onClick={() => setDeclineModal(true)}
-                  className="dropdown-item"
-                >
-                  Decline
-                </span>
-              </Dropdown.Item>
-              <Dropdown.Item>
-                <span
-                  onClick={() => setApprovalModal(true)}
-                  className="dropdown-item"
-                >
-                  Approve
-                </span>
-              </Dropdown.Item>
+              {
+                data.isApprovedUse ? (
+
+                  <Dropdown.Item>
+                    <span
+                      onClick={() => setDeclineModal(true)}
+                      className="dropdown-item"
+                    >
+                      Decline
+                    </span>
+                  </Dropdown.Item>
+                )
+                  : (
+
+                    <Dropdown.Item>
+                      <span
+                        onClick={() => setApprovalModal(true)}
+                        className="dropdown-item"
+                      >
+                        Approve
+                      </span>
+                    </Dropdown.Item>
+                  )
+              }
             </Dropdown.Menu>
           </Dropdown>
         </td>
@@ -109,17 +147,17 @@ const Dashboard: React.FC = () => {
         <Row className="dashboard-main pr-4">
           <h6 className="mb-4 mt-4 all-users-text">All Users</h6>
           <div className="col-md-4 col-6 d-flex align-items-stretch">
-            <Card name={"50"} icon={"path20.png"}>
+            <Card name={tableData.length.toString()} icon={"path20.png"}>
               <p className="ml-5">No. of request</p>
             </Card>
           </div>
           <div className=" col-md-4 col-6 d-flex align-items-stretch">
-            <Card name={"35"} icon={"path20.png"}>
+            <Card name={approveCount} icon={"path20.png"}>
               <p className="ml-5">No. of approved users</p>
             </Card>
           </div>
           <div className="col-md-4 col-6 d-flex align-items-stretch">
-            <Card name={"15"} icon={"path19.png"}>
+            <Card name={declineCount} icon={"path19.png"}>
               <p className="ml-5">No. of declined users</p>
             </Card>
           </div>
@@ -135,10 +173,9 @@ const Dashboard: React.FC = () => {
                   value={filterValue}
                   onChange={(e) => setFilterValue(e.target.value)}
                 >
-                  <option>Type</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option value={''}>select an account type</option>
+                  <option value="sender">Sender</option>
+                  <option value="reciever">Reciever</option>
                 </Form.Select>
 
                 <div className="position-relative ml-3 d-flex align-items-center border rounded search-props ">
@@ -162,19 +199,19 @@ const Dashboard: React.FC = () => {
             <Card>
               <Table
                 emptyMessage="No User"
-                totalPages={2}
-                totalItems={50}
+                totalPages={totalPages}
+                totalItems={tableData.length}
                 currentPage={currentPage}
-                loadingText={"Loading projects..."}
+                loadingText={"Loading Users..."}
                 rowFormat={tableRow}
                 paginated={user.length > 0}
                 onPrev={onPrevPage}
                 onNext={onNextPage}
-                data={user}
-                limit={limit}
+                data={tableData}
+                limit={tableData.length}
                 loading={tableLoad}
                 headers={tableHeader}
-                // onChangePageLimit={onChangePageLimit}
+              // onChangePageLimit={onChangePageLimit}
               />
             </Card>
           </div>

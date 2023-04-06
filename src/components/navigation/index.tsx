@@ -67,16 +67,6 @@ export const NavBar: ({ logout }: NavProps) => JSX.Element = ({
             <span className="mdi mdi-menu"></span>
           </button>
           <ul className="navbar-nav navbar-nav-right">
-            <li
-              onClick={() => {
-                showSettings();
-              }}
-              className="nav-item cursor-pointer nav-logout d-none d-lg-block"
-            >
-              <span className="nav-link">
-                <SVGIcon name="setting" />
-              </span>
-            </li>
 
             <li
               onClick={() => setShowNotificationsModal(true)}
@@ -85,6 +75,20 @@ export const NavBar: ({ logout }: NavProps) => JSX.Element = ({
               <span className="nav-link">
                 <SVGIcon name="notification" />
               </span>
+            </li>
+            <li
+              onClick={() => {
+                showSettings();
+              }}
+              className="nav-item cursor-pointer nav-logout d-none d-lg-block"
+            >
+              <span className="nav-link">
+                <SVGIcon name="message" />
+              </span>
+            </li>
+            <li>
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="user icon" className={`${S.userIcon} mr-1`} />
+              <span>Made Moyin</span>
             </li>
 
           </ul>

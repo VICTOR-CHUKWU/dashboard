@@ -4,7 +4,7 @@ const accessService = {
   getAll: (limit?: any, page?: number) => {
     return new Promise(function (resolve, reject) {
       ApiService.get(
-        `/admin/user/getAllUsers?currentPage=${page}&perPage=${limit}`
+        `/user/getEarlyAccessUsers`
       )
         .then((res) => {
           if (res.status !== 200) {
