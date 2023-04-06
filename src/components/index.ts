@@ -4,7 +4,6 @@ export { NavBar } from "./navigation";
 export { SideBar } from "./sidebar";
 export { ActiveLink } from "./misc";
 export { Loader } from "./misc";
-export { Map } from "./cards";
 export { Empty } from "./empty";
 export { Card } from "./cards";
 export { Table } from "./table";

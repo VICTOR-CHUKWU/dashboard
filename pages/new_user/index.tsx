@@ -1,7 +1,7 @@
 import { Row } from "react-bootstrap";
 import React, { useEffect, useState, useCallback } from "react";
 import moment from "moment";
-import { Modal, Page, Table, Card, Map } from "@components";
+import { Modal, Page, Table, Card, } from "@components";
 import Dashboard from "@page/dashboard";
 
 

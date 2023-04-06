@@ -4,7 +4,6 @@ import moment from "moment";
 import { Modal, Page, Table, Card, Loader } from "@components";
 import { Dropdown, Button } from "react-bootstrap";
 import { accessService } from "@src/services";
-import user from "../../src/data/user.json";
 
 const Dashboard: React.FC = () => {
   const [tableData, setTableData] = useState([]);
@@ -204,7 +203,7 @@ const Dashboard: React.FC = () => {
                 currentPage={currentPage}
                 loadingText={"Loading Users..."}
                 rowFormat={tableRow}
-                paginated={user.length > 0}
+                paginated={tableData.length > 0}
                 onPrev={onPrevPage}
                 onNext={onNextPage}
                 data={tableData}
@@ -219,7 +218,6 @@ const Dashboard: React.FC = () => {
 
         <Modal
           aria-labelledby="contained-modal-title-vcenter"
-          centered
           show={approvalModal}
           size="md"
           onHide={() => {
@@ -235,7 +233,6 @@ const Dashboard: React.FC = () => {
         </Modal>
         <Modal
           aria-labelledby="contained-modal-title-vcenter"
-          centered
           show={declineModal}
           size="md"
           onHide={() => {
