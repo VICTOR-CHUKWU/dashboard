@@ -1,32 +1,18 @@
 import { Row } from "react-bootstrap";
 import React, { useEffect, useState, useCallback } from "react";
 import moment from "moment";
-import { Modal, Page, Table, Card, Map } from "@components";
+import { Modal, Page, Table, Card, } from "@components";
+import Dashboard from "@page/dashboard";
 
 
 
-const Dashboard: React.FC = () => {
-
-
-  const [tableData, setTableData] = useState(null);
-  const [tableLoad, setTableLoad] = useState(true);
-
-
-
-  //load disbursement data
-
+const NewUser: React.FC = () => {
 
   return (
-    <Page name={"Dashboard"}>
-      <>
-        <Row>
-          hello
-        </Row>
-      </>
-
-
-    </Page>
+    <>
+      <Dashboard />
+    </>
   );
 };
 
-export default Dashboard;
+export default NewUser;

@@ -21,7 +21,7 @@ export const Page: FC<pageProp> = (props) => {
   return (
     <Layout name={props?.name}>
       <NavBar logout={onLogout} />
-      <div className="container-fluid page-body-wrapper">
+      <div className="container-fluid page-body-wrapper dashboard-main">
         <SideBar logout={onLogout} />
         <div className="main-panel">
           <div className="content-wrapper">{props.children}</div>

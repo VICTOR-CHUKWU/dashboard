@@ -1,0 +1,28 @@
+.button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background-color: #A2A2A2;
+    color: #fff;
+    font-size: 15px;
+    box-shadow: 10px 10px;
+    transition: all 1s ease-in-out;
+    min-width: 4.5rem;
+    min-height: 2rem;
+    &--cancel {
+        width: 8rem;
+    }
+    &--yes {
+        background-color: #C93413;
+        width: 8rem;
+    }
+    &--success {
+        background-color: #011E0C;
+    }
+    &:hover {
+        transform: scale(1.1);
+    }
+}

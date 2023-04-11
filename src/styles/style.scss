@@ -18601,7 +18601,8 @@ input:focus {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  background: #2a3342;
+  // background: #2a3342;
+  background: white;
   transition: background 0.25s ease;
   -webkit-transition: background 0.25s ease;
   -moz-transition: background 0.25s ease;
@@ -18612,7 +18613,8 @@ input:focus {
   -webkit-transition: width 0.25s ease, background 0.25s ease;
   -moz-transition: width 0.25s ease, background 0.25s ease;
   -ms-transition: width 0.25s ease, background 0.25s ease;
-  background: #2a3342;
+  // background: #2a3342;
+  background: white;
   width: 260px;
   height: 70px;
 }
@@ -20370,8 +20372,9 @@ html {
 .main-panel {
   -webkit-transition: width 0.25s ease, margin 0.25s ease;
   transition: width 0.25s ease, margin 0.25s ease;
-  width: calc(100% - 260px);
+  width: calc(100% - 360px);
   min-height: calc(100vh - 70px);
+  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -20391,6 +20394,7 @@ html {
   background: #ffffff;
   padding: 0;
   width: 100%;
+  margin: 1rem;
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
@@ -24001,7 +24005,7 @@ code {
 /* Cards */
 .card {
   border-radius: 0.9rem !important;
-
+  padding: 2rem;
   border: 0;
 }
 .card .card-body {

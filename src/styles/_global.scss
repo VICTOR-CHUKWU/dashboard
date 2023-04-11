@@ -48,6 +48,10 @@ a {
   margin-left: auto;
 }
 
+.dashboard-main {
+  background-color: #F8F8F8;
+}
+
 .theme-secondary {
   background-color: #d5dae1;
 }
@@ -60,9 +64,22 @@ a {
   cursor: pointer;
 }
 
+.brand-logo {
+  height: auto !important;
+  width: 3rem !important;
+}
+
+#more-btn {
+  background-color: red;
+}
+
 .success-btn {
   cursor: pointer;
   color: #0ebc50 !important;
+}
+
+.button-cancel {
+  background-color: #A2A2A2;
 }
 
 .curso-pointer {
@@ -75,17 +92,17 @@ a {
 }
 
 .modal-header {
-  border-bottom: none !important;
-  padding: 0.65rem 1.857rem !important;
+    border-bottom: none !important;
 }
 
 .modal-content {
   border-radius: 0.7rem !important;
 }
 .modal-body {
-  padding: 0.65rem 1.857rem !important;
   max-height: 35rem;
   overflow-y: auto;
+  display: flex;
+  justify-content: center;
 
   &::-webkit-scrollbar {
     width: 0.5em;
@@ -117,8 +134,34 @@ a {
   }
 }
 
+.btn-modal {
+  margin-left: 1rem;
+}
+
+.all-users-text {
+  color: #141715;
+}
+
 .card {
   border: none;
+}
+
+.card-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.card-children-font {
+  font-size: 14px !important;
+  font-weight: 400;
+  color: #141715;
+}
+
+.card-name-font {
+  font-size: 26px !important;
+  font-weight: 600;
+  color: #141715;
 }
 
 .table-result {
@@ -132,6 +175,32 @@ a {
   justify-content: space-between;
 }
 
+.red-dot, .yellow-dot, .blue-dot {
+  position: relative;
+  &::before{
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    left: 6px;
+    top: 45%;
+    background-color: red;
+    border-radius: 50%;
+  }
+}
+
+.yellow-dot {
+  &::before{
+    background-color: #fed713;;
+  }
+}
+
+.blue-dot {
+  &::before{
+    background-color: blue;
+  }
+}
+
 thead {
   background: linear-gradient(
       0deg,
@@ -141,13 +210,49 @@ thead {
     #c2c9d1 !important;
 }
 
+.sidebar {
+  background-color: #011E0C;
+}
+
 .nav-item .logout-link {
   color: #db442f !important;
+}
+
+.input-group-append .icon-search {
+  cursor: default;
+}
+
+.table-props:nth-child(even) {
+  background: #CCC
+}
+
+.search-props {
+  height: 2.15rem;
+  background-color: #F8F8F8;
+}
+
+.input-width {
+  max-width: 20rem;
+}
+
+.no-border {
+  border: none !important;
+  outline: none !important;
+}
+
+.dropdown-filter {
+  max-width: 30%;
+  cursor: pointer;
 }
 
 .form-group .form-control {
   border-radius: 1.25rem !important;
   background-color: #eef0f3;
+}
+
+.form-group .form-input-field {
+  border-radius: 0.5rem !important;
+  width: 100%;
 }
 
 .form-group .form-btn {

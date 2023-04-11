@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Charles",
+        "Email": "Vic@gmail.com",
+        "PhoneNumber": "07032222222",
+        "status": "Pending",
+        "account": "Traveler"
+    },
+    {
+        "name": "Charles",
+        "Email": "Vic@gmail.com",
+        "PhoneNumber": "07032222222",
+        "status": "Approved",
+        "account": "Traveler"
+    },
+    {
+        "name": "Charles",
+        "Email": "Vic@gmail.com",
+        "PhoneNumber": "07032222222",
+        "status": "Who",
+        "account": "Traveler"
+    },
+    {
+        "name": "Charles",
+        "Email": "Vic@gmail.com",
+        "PhoneNumber": "07032222222",
+        "status": "Approved",
+        "account": "Traveler"
+    }
+]
